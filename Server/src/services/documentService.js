@@ -85,7 +85,7 @@ export const processDocument = async (documentId, fileData, fileType, fileName) 
             let resourceType = (fileType === 'application/pdf' || fileType === 'text/plain') ? 'raw' : 'auto';
             const uploadResult = await new Promise((resolve, reject) => {
                 const stream = cloudinary.uploader.upload_stream(
-                    { folder: 'study-buddy-assets', resource_type: resourceType },
+                    { folder: 'learnova-assets', resource_type: resourceType },
                     (err, res) => { if (err) reject(err); else resolve(res); }
                 );
                 stream.end(fileData);
