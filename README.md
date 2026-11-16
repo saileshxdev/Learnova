@@ -177,12 +177,22 @@ git clone https://github.com/saileshxdev/Learnova.git
 cd Learnova
 ```
 
-#### **2. Backend Setup**
+#### **2. Database Setup**
+Start PostgreSQL with `pgvector` enabled using Docker:
+```bash
+docker compose up -d
+```
+*(Or use cloud PostgreSQL like [Neon.tech](https://neon.tech) or [Supabase](https://supabase.com) and set `DATABASE_URL` in `Server/.env`)*
+
+#### **3. Backend Setup**
 ```bash
 cd Server
 npm install
 # Copy and configure environment variables
 cp .env.example .env
+
+# Seed default test account (sailesh@learnova.app / password123)
+npm run seed
 ```
 Start the backend server:
 ```bash
@@ -190,7 +200,7 @@ npm run dev
 ```
 The API server will automatically connect to PostgreSQL and run schema migrations (`initDB()`), ensuring all tables and vector indexes are created.
 
-#### **3. Frontend Setup**
+#### **4. Frontend Setup**
 In a new terminal window:
 ```bash
 cd Frontend
